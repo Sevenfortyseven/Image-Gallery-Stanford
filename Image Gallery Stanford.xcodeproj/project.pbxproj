@@ -18,6 +18,9 @@
 		3C0CEDED28859B1600167711 /* ImageGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDEC28859B1600167711 /* ImageGallery.swift */; };
 		3C0CEDEF28859B3C00167711 /* GalleryImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDEE28859B3C00167711 /* GalleryImage.swift */; };
 		3C0CEDF128859DBD00167711 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDF028859DBD00167711 /* UIViewController+.swift */; };
+		9F65D6152885E23B00CA7D90 /* ImageCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F65D6142885E23B00CA7D90 /* ImageCollectionVC.swift */; };
+		9F65D61A2885E61300CA7D90 /* ImageDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F65D6192885E61300CA7D90 /* ImageDetailsVC.swift */; };
+		9F65D61C2885EBCB00CA7D90 /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F65D61B2885EBCB00CA7D90 /* ImageCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		3C0CEDEC28859B1600167711 /* ImageGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGallery.swift; sourceTree = "<group>"; };
 		3C0CEDEE28859B3C00167711 /* GalleryImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryImage.swift; sourceTree = "<group>"; };
 		3C0CEDF028859DBD00167711 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		9F65D6142885E23B00CA7D90 /* ImageCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionVC.swift; sourceTree = "<group>"; };
+		9F65D6192885E61300CA7D90 /* ImageDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailsVC.swift; sourceTree = "<group>"; };
+		9F65D61B2885EBCB00CA7D90 /* ImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +122,9 @@
 		3C0CEDE6288597E000167711 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				3C0CEDCE2885563F00167711 /* DocumentBrowserViewController.swift */,
+				9F65D6172885E24600CA7D90 /* Documents */,
+				9F65D6182885E25300CA7D90 /* Image Details */,
+				9F65D6162885E24000CA7D90 /* Image Gallery */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -128,6 +136,31 @@
 				3C0CEDF028859DBD00167711 /* UIViewController+.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9F65D6162885E24000CA7D90 /* Image Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				9F65D61B2885EBCB00CA7D90 /* ImageCollectionCell.swift */,
+				9F65D6142885E23B00CA7D90 /* ImageCollectionVC.swift */,
+			);
+			path = "Image Gallery";
+			sourceTree = "<group>";
+		};
+		9F65D6172885E24600CA7D90 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				3C0CEDCE2885563F00167711 /* DocumentBrowserViewController.swift */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		9F65D6182885E25300CA7D90 /* Image Details */ = {
+			isa = PBXGroup;
+			children = (
+				9F65D6192885E61300CA7D90 /* ImageDetailsVC.swift */,
+			);
+			path = "Image Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,12 +235,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C0CEDED28859B1600167711 /* ImageGallery.swift in Sources */,
+				9F65D61C2885EBCB00CA7D90 /* ImageCollectionCell.swift in Sources */,
 				3C0CEDE92885991A00167711 /* UIImageView+.swift in Sources */,
+				9F65D61A2885E61300CA7D90 /* ImageDetailsVC.swift in Sources */,
 				3C0CEDF128859DBD00167711 /* UIViewController+.swift in Sources */,
 				3C0CEDD32885563F00167711 /* ImageGalleryDocument.swift in Sources */,
 				3C0CEDCF2885563F00167711 /* DocumentBrowserViewController.swift in Sources */,
 				3C0CEDEF28859B3C00167711 /* GalleryImage.swift in Sources */,
 				3C0CEDEB28859ADB00167711 /* DataStore.swift in Sources */,
+				9F65D6152885E23B00CA7D90 /* ImageCollectionVC.swift in Sources */,
 				3C0CEDCD2885563F00167711 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
