@@ -9,23 +9,31 @@
 /* Begin PBXBuildFile section */
 		3C0CEDCD2885563F00167711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDCC2885563F00167711 /* AppDelegate.swift */; };
 		3C0CEDCF2885563F00167711 /* DocumentBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDCE2885563F00167711 /* DocumentBrowserViewController.swift */; };
-		3C0CEDD12885563F00167711 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDD02885563F00167711 /* DocumentViewController.swift */; };
-		3C0CEDD32885563F00167711 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDD22885563F00167711 /* Document.swift */; };
+		3C0CEDD32885563F00167711 /* ImageGalleryDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDD22885563F00167711 /* ImageGalleryDocument.swift */; };
 		3C0CEDD62885563F00167711 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0CEDD42885563F00167711 /* Main.storyboard */; };
 		3C0CEDD82885564100167711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C0CEDD72885564100167711 /* Assets.xcassets */; };
 		3C0CEDDB2885564100167711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C0CEDD92885564100167711 /* LaunchScreen.storyboard */; };
+		3C0CEDE92885991A00167711 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDE82885991A00167711 /* UIImageView+.swift */; };
+		3C0CEDEB28859ADB00167711 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDEA28859ADB00167711 /* DataStore.swift */; };
+		3C0CEDED28859B1600167711 /* ImageGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDEC28859B1600167711 /* ImageGallery.swift */; };
+		3C0CEDEF28859B3C00167711 /* GalleryImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDEE28859B3C00167711 /* GalleryImage.swift */; };
+		3C0CEDF128859DBD00167711 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0CEDF028859DBD00167711 /* UIViewController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3C0CEDC92885563F00167711 /* Image Gallery Stanford.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Gallery Stanford.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C0CEDCC2885563F00167711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C0CEDCE2885563F00167711 /* DocumentBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentBrowserViewController.swift; sourceTree = "<group>"; };
-		3C0CEDD02885563F00167711 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
-		3C0CEDD22885563F00167711 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		3C0CEDD22885563F00167711 /* ImageGalleryDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryDocument.swift; sourceTree = "<group>"; };
 		3C0CEDD52885563F00167711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C0CEDD72885564100167711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C0CEDDA2885564100167711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C0CEDDC2885564100167711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C0CEDE82885991A00167711 /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		3C0CEDEA28859ADB00167711 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		3C0CEDEC28859B1600167711 /* ImageGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGallery.swift; sourceTree = "<group>"; };
+		3C0CEDEE28859B3C00167711 /* GalleryImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryImage.swift; sourceTree = "<group>"; };
+		3C0CEDF028859DBD00167711 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +66,68 @@
 		3C0CEDCB2885563F00167711 /* Image Gallery Stanford */ = {
 			isa = PBXGroup;
 			children = (
-				3C0CEDCC2885563F00167711 /* AppDelegate.swift */,
-				3C0CEDCE2885563F00167711 /* DocumentBrowserViewController.swift */,
-				3C0CEDD02885563F00167711 /* DocumentViewController.swift */,
-				3C0CEDD22885563F00167711 /* Document.swift */,
-				3C0CEDD42885563F00167711 /* Main.storyboard */,
-				3C0CEDD72885564100167711 /* Assets.xcassets */,
-				3C0CEDD92885564100167711 /* LaunchScreen.storyboard */,
-				3C0CEDDC2885564100167711 /* Info.plist */,
+				3C0CEDE42885974700167711 /* Configuration */,
+				3C0CEDE7288598E300167711 /* Extensions */,
+				3C0CEDE32885973800167711 /* IB */,
+				3C0CEDE5288597D800167711 /* Model */,
+				3C0CEDE22885971100167711 /* Root */,
+				3C0CEDE6288597E000167711 /* Scenes */,
 			);
 			path = "Image Gallery Stanford";
+			sourceTree = "<group>";
+		};
+		3C0CEDE22885971100167711 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				3C0CEDCC2885563F00167711 /* AppDelegate.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		3C0CEDE32885973800167711 /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				3C0CEDD42885563F00167711 /* Main.storyboard */,
+				3C0CEDD92885564100167711 /* LaunchScreen.storyboard */,
+			);
+			path = IB;
+			sourceTree = "<group>";
+		};
+		3C0CEDE42885974700167711 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				3C0CEDDC2885564100167711 /* Info.plist */,
+				3C0CEDD72885564100167711 /* Assets.xcassets */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		3C0CEDE5288597D800167711 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C0CEDD22885563F00167711 /* ImageGalleryDocument.swift */,
+				3C0CEDEA28859ADB00167711 /* DataStore.swift */,
+				3C0CEDEC28859B1600167711 /* ImageGallery.swift */,
+				3C0CEDEE28859B3C00167711 /* GalleryImage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3C0CEDE6288597E000167711 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3C0CEDCE2885563F00167711 /* DocumentBrowserViewController.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		3C0CEDE7288598E300167711 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3C0CEDE82885991A00167711 /* UIImageView+.swift */,
+				3C0CEDF028859DBD00167711 /* UIViewController+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,9 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C0CEDD32885563F00167711 /* Document.swift in Sources */,
-				3C0CEDD12885563F00167711 /* DocumentViewController.swift in Sources */,
+				3C0CEDED28859B1600167711 /* ImageGallery.swift in Sources */,
+				3C0CEDE92885991A00167711 /* UIImageView+.swift in Sources */,
+				3C0CEDF128859DBD00167711 /* UIViewController+.swift in Sources */,
+				3C0CEDD32885563F00167711 /* ImageGalleryDocument.swift in Sources */,
 				3C0CEDCF2885563F00167711 /* DocumentBrowserViewController.swift in Sources */,
+				3C0CEDEF28859B3C00167711 /* GalleryImage.swift in Sources */,
+				3C0CEDEB28859ADB00167711 /* DataStore.swift in Sources */,
 				3C0CEDCD2885563F00167711 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Image Gallery Stanford/Info.plist";
+				INFOPLIST_FILE = "Image Gallery Stanford/Configuration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -320,7 +384,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Image Gallery Stanford/Info.plist";
+				INFOPLIST_FILE = "Image Gallery Stanford/Configuration/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
