@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct GalleryImage
+struct GalleryImage: Codable
 {
     var aspectRatio: CGFloat?
     var url: URL?

@@ -34,5 +34,24 @@ class DataStore
     public func removeImage(with indexPath: IndexPath) {
         chosenGallery?.galleryImages?.remove(at: indexPath.row)
     }
-
+    
+    public func save(gallery: ImageGallery) {
+        if let json = gallery.json {
+            if let url = try? FileManager.default.url(
+                for: .documentDirectory,
+                in: .userDomainMask,
+                appropriateFor: nil,
+                create: true
+            ).appendingPathComponent("Untitled.json") {
+                do {
+                    try json.write(to: url)
+                    print("Saved successfully")
+                } catch let error {
+                    print("Couldn't save \(error)")
+                }
+            }
+        }
+    }
+    
+    
 }

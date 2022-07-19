@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct ImageGallery
+struct ImageGallery: Codable
 {
     let title: String
     var galleryImages: [GalleryImage]?
     var uuid: String
+    
+    public var json: Data? {
+        return try? JSONEncoder().encode(self)
+    }
     
     init(title: String, galleryImages: [GalleryImage]?) {
         self.title = title

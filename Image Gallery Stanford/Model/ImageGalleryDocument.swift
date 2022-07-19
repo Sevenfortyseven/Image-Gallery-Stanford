@@ -9,8 +9,10 @@ import UIKit
 
 class ImageGalleryDocument: UIDocument {
     
+    private var galleryStore = DataStore.sharedDataStore
+    
     override func contents(forType typeName: String) throws -> Any {
-        // Encode your document with an instance of NSData or NSFileWrapper
+        
         return Data()
     }
     
