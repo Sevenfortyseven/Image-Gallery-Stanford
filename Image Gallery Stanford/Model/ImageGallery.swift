@@ -9,7 +9,7 @@ import Foundation
 
 struct ImageGallery: Codable
 {
-    let title: String
+    let title: String?
     var galleryImages: [GalleryImage]?
     var uuid: String
     
@@ -17,7 +17,16 @@ struct ImageGallery: Codable
         return try? JSONEncoder().encode(self)
     }
     
-    init(title: String, galleryImages: [GalleryImage]?) {
+    init?(json: Data) {
+        if let newValue = try? JSONDecoder().decode(ImageGallery.self, from: json) {
+            self = newValue
+        } else {
+            print("Decoding failed")
+            return nil
+        }
+    }
+    
+    init(title: String?, galleryImages: [GalleryImage]?) {
         self.title = title
         self.galleryImages = galleryImages
         self.uuid = UUID().uuidString

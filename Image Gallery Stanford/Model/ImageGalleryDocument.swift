@@ -9,15 +9,17 @@ import UIKit
 
 class ImageGalleryDocument: UIDocument {
     
-    private var galleryStore = DataStore.sharedDataStore
+    var imageGallery: ImageGallery?
     
     override func contents(forType typeName: String) throws -> Any {
-        
-        return Data()
+        return imageGallery?.json ?? Data()
     }
     
     override func load(fromContents contents: Any, ofType typeName: String?) throws {
-        // Load your document from contents
+        if let json = contents as? Data {
+            print(json)
+            imageGallery = ImageGallery(json: json)
+        }
     }
 }
 

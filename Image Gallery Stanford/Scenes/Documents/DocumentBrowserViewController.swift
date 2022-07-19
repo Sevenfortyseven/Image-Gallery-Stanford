@@ -10,38 +10,36 @@ import UIKit
 
 class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocumentBrowserViewControllerDelegate {
     
+    private var template: URL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         delegate = self
-        
-        allowsDocumentCreation = true
+        allowsDocumentCreation = false
         allowsPickingMultipleItems = false
         browserUserInterfaceStyle = .dark
         view.tintColor = .systemPink
-        
-        // Update the style of the UIDocumentBrowserViewController
-        // browserUserInterfaceStyle = .dark
-        // view.tintColor = .white
-        
-        // Specify the allowed content types of your application via the Info.plist.
-        
-        // Do any additional setup after loading the view.
+        createTemplate()
+    }
+    
+    private func createTemplate() {
+        template = try? FileManager.default.url(
+            for: .applicationSupportDirectory,
+            in: .userDomainMask,
+            appropriateFor: nil,
+            create: true
+        ).appendingPathComponent("Untitled.json")
+        if template != nil {
+            allowsDocumentCreation = FileManager.default.createFile(atPath: template!.path, contents: Data())
+        }
     }
     
     
     // MARK: UIDocumentBrowserViewControllerDelegate
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didRequestDocumentCreationWithHandler importHandler: @escaping (URL?, UIDocumentBrowserViewController.ImportMode) -> Void) {
-        let newDocumentURL: URL? = nil
+        importHandler(template, .copy)
         
-        // Set the URL for the new document here. Optionally, you can present a template chooser before calling the importHandler.
-        // Make sure the importHandler is always called, even if the user cancels the creation request.
-        if newDocumentURL != nil {
-            importHandler(newDocumentURL, .move)
-        } else {
-            importHandler(nil, .none)
-        }
     }
     
     func documentBrowser(_ controller: UIDocumentBrowserViewController, didPickDocumentsAt documentURLs: [URL]) {
@@ -66,12 +64,21 @@ class DocumentBrowserViewController: UIDocumentBrowserViewController, UIDocument
     func presentDocument(at documentURL: URL) {
         
         // TODO: Create new presentation 
-//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//        let documentViewController = storyBoard.instantiateViewController(withIdentifier: "DocumentViewController") as! DocumentViewController
-//        documentViewController.document = ImageGalleryDocument(fileURL: documentURL)
-//        documentViewController.modalPresentationStyle = .fullScreen
-        
-//        present(documentViewController, animated: true, completion: nil)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let navC = storyBoard.instantiateViewController(withIdentifier: "DocumentNC")
+        if let imageCollectionVC = navC.contents as? ImageGalleryCollectionViewController {
+            imageCollectionVC.document = ImageGalleryDocument(fileURL: template!)
+        }
+        present(navC, animated: true)
     }
 }
 
+extension UIViewController {
+    var contents: UIViewController {
+        if let navC = self as? UINavigationController {
+            return navC.visibleViewController ?? navC
+        } else {
+            return self
+        }
+    }
+}

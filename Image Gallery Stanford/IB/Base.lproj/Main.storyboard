@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xKi-Zg-np6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -22,13 +22,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2689" y="-378"/>
+            <point key="canvasLocation" x="-2703" y="-377"/>
         </scene>
-        <!--Image Gallery-->
+        <!--Image Gallery Collection View Controller-->
         <scene sceneID="c4l-Qr-fDs">
             <objects>
-                <collectionViewController storyboardIdentifier="ImageGalleryCollectionViewController" title="Image Gallery" id="TLG-WH-Ang" customClass="ImageGalleryCollectionViewController" customModule="Image_Gallery" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="otG-A8-N0A">
+                <collectionViewController storyboardIdentifier="ImageGalleryCollectionViewController" id="TLG-WH-Ang" customClass="ImageGalleryCollectionViewController" customModule="Image_Gallery_Stanford" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="otG-A8-N0A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,7 +51,7 @@
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionCell" id="qnY-Kr-OmL" customClass="ImageCollectionCell" customModule="Image_Gallery" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCollectionCell" id="qnY-Kr-OmL" customClass="ImageCollectionCell" customModule="Image_Gallery_Stanford" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aQa-U5-b09">
@@ -104,7 +104,7 @@
         <!--Image Details View Controller-->
         <scene sceneID="C2j-nk-3wn">
             <objects>
-                <viewController storyboardIdentifier="ImageDetailsViewController" id="kAA-Pw-eLm" customClass="ImageDetailsViewController" customModule="Image_Gallery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageDetailsViewController" id="kAA-Pw-eLm" customClass="ImageDetailsViewController" customModule="Image_Gallery_Stanford" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xdf-q5-mbK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,7 +161,7 @@
         <!--Navigation Controller-->
         <scene sceneID="jJX-lf-No0">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xKi-Zg-np6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DocumentNC" automaticallyAdjustsScrollViewInsets="NO" id="xKi-Zg-np6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AVN-c8-G5r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

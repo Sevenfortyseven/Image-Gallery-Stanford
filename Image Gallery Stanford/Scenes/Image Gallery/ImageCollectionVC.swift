@@ -10,7 +10,9 @@ import UIKit
 public class ImageGalleryCollectionViewController: UICollectionViewController
 {
     
-    private var dataSource = DataStore.sharedDataStore
+//    private var dataSource = DataStore.sharedDataStore
+    var document: ImageGalleryDocument?
+    var imageGallery: ImageGallery?
     
     private var cellWidthScale: CGFloat = 150
     
@@ -18,11 +20,33 @@ public class ImageGalleryCollectionViewController: UICollectionViewController
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .lightGray
         initGestureRecognizers()
         collectionView.dragDelegate = self
         collectionView.dropDelegate = self
         // Add a dropZone
         self.navigationController?.navigationBar.addInteraction(UIDropInteraction(delegate: self))
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        document?.open() { success in
+            if success {
+                print("document opened successfully")
+                self.title = self.document?.localizedName
+                if self.document?.imageGallery != nil {
+                    self.imageGallery = self.document?.imageGallery
+                } else {
+                    
+                }
+            }
+        }
+    }
+    
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        document?.imageGallery = imageGallery
+        document?.updateChangeCount(.done)
     }
     
     private func initGestureRecognizers() {
@@ -49,7 +73,7 @@ public class ImageGalleryCollectionViewController: UICollectionViewController
             if let chosenRow = collectionView.indexPath(for: cell)?.row {
                 if segue.identifier == "showDetails" {
                     let targetVC = segue.destination as! ImageDetailsViewController
-                    targetVC.imageData = dataSource.chosenGallery?.galleryImages?[chosenRow]
+                    targetVC.imageData = imageGallery?.galleryImages?[chosenRow]
                 }
             }
         }
@@ -65,13 +89,13 @@ extension ImageGalleryCollectionViewController: UICollectionViewDelegateFlowLayo
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cellWidthScale, height: (cellWidthScale * (dataSource.chosenGallery?.galleryImages?[indexPath.row].aspectRatio ?? 150)))
+        return CGSize(width: cellWidthScale, height: (cellWidthScale * (imageGallery?.galleryImages?[indexPath.row].aspectRatio ?? 150)))
     }
     
     public override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionCell", for: indexPath)
         if let imageCell = cell as? ImageCollectionCell {
-            if let imageUrl = dataSource.chosenGallery?.galleryImages?[indexPath.item].url {
+            if let imageUrl = imageGallery?.galleryImages?[indexPath.item].url {
                 imageCell.imageURL = imageUrl
                 imageCell.galleryImageView.fetchImage(with: imageUrl) { fetchingStarted in
                     if fetchingStarted {
@@ -86,7 +110,7 @@ extension ImageGalleryCollectionViewController: UICollectionViewDelegateFlowLayo
     }
     
     public override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.chosenGallery?.galleryImages?.count ?? 0
+        return imageGallery?.galleryImages?.count ?? 0
     }
 }
 
@@ -140,17 +164,17 @@ extension ImageGalleryCollectionViewController: UICollectionViewDragDelegate, UI
             // If drag item is local collection cell image
             if let sourceIndexPath = item.sourceIndexPath {
                 collectionView.performBatchUpdates {
-                    if let sortedImage = dataSource.chosenGallery?.galleryImages?.remove(at: sourceIndexPath.item) {
-                        dataSource.chosenGallery?.galleryImages?.insert(sortedImage, at: destinationIndexPath.item)
+                    if let sortedImage = imageGallery?.galleryImages?.remove(at: sourceIndexPath.item) {
+                        imageGallery?.galleryImages?.insert(sortedImage, at: destinationIndexPath.item)
                         collectionView.deleteItems(at: [sourceIndexPath])
                         collectionView.insertItems(at: [destinationIndexPath])
                     }
                 }
                 coordinator.drop(item.dragItem, toItemAt: destinationIndexPath)
+            // If drag item is an exported object
             } else {
                 var newGalleryItem = GalleryImage()
                 let placeholderContext = coordinator.drop(item.dragItem, to: UICollectionViewDropPlaceholder(insertionIndexPath: destinationIndexPath, reuseIdentifier: "DropPlaceholderCell"))
-             
                 // Get an object image aspect ratio
                 item.dragItem.itemProvider.loadObject(ofClass: UIImage.self) { imageProvider, _ in
                     DispatchQueue.main.async {
@@ -168,7 +192,7 @@ extension ImageGalleryCollectionViewController: UICollectionViewDragDelegate, UI
                         if let imageUrl = urlProvider as? URL {
                             placeholderContext.commitInsertion { insertionIndexPath in
                                 newGalleryItem.url = imageUrl
-                                self.dataSource.chosenGallery?.galleryImages?.insert(newGalleryItem, at: insertionIndexPath.item)
+                                self.imageGallery!.galleryImages!.insert(newGalleryItem, at: insertionIndexPath.item)
                             }
                         } else {
                             placeholderContext.deletePlaceholder()
@@ -195,7 +219,7 @@ extension ImageGalleryCollectionViewController: UIDropInteractionDelegate
         session.loadObjects(ofClass: UIImage.self) { image in
             if let sourceIndexPath = self.lastDraggedCellIndexPath {
                 self.collectionView.performBatchUpdates {
-                    self.dataSource.removeImage(with: sourceIndexPath)
+                    self.imageGallery?.galleryImages?.remove(at: sourceIndexPath.row)
                     self.collectionView.deleteItems(at: [sourceIndexPath])
                 }
             }

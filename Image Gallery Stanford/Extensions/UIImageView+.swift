@@ -18,9 +18,11 @@ extension UIImageView
         }
         let session = URLSession.shared
         let dataTask = session.dataTask(with: url) { data, _, _ in
-            if let data = data, let fetchedImage = UIImage(data: data) {
-                self.image = fetchedImage
-                completion(true)
+            DispatchQueue.main.async {
+                if let data = data, let fetchedImage = UIImage(data: data) {
+                    self.image = fetchedImage
+                    completion(true)
+                }
             }
         }
         dataTask.resume()
